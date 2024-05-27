@@ -207,9 +207,9 @@ static Shortcut shortcuts[] = {
 	{ TERMMOD,              XK_Y,           selpaste,       {.i =  0} },
 	{ ShiftMask,            XK_Insert,      selpaste,       {.i =  0} },
 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
-	{ MODKEY,               XK_bracketleft, chgalpha,       {.f = -1} }, /* Decrease opacity */
-	{ MODKEY|ShiftMask,     XK_braceright,  chgalpha,       {.f = +1} }, /* Increase opacity */
-	{ MODKEY,               XK_bracketright,chgalpha,       {.f =  0} }, /* Reset opacity */
+	{ Mod1Mask,             XK_a, 		chgalpha,       {.f = -1} },
+	{ Mod1Mask,             XK_s,  		chgalpha,       {.f = +1} },
+	{ Mod1Mask,             XK_d,		chgalpha,       {.f =  0} },
 };
 
 /*
