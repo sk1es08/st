@@ -59,6 +59,7 @@ static void zoom(const Arg *);
 static void zoomabs(const Arg *);
 static void zoomreset(const Arg *);
 static void ttysend(const Arg *);
+static void chgalpha(const Arg *);
 
 /* config.h for applying patches and the configuration. */
 #include "config.h"
@@ -1168,6 +1169,9 @@ xinit(int cols, int rows)
 	usedfont = (opt_font == NULL)? font : opt_font;
 	xloadfonts(usedfont, 0);
 
+   /* Backup default alpha value */
+   alpha_def = alpha;
+
 	/* colors */
 	xw.cmap = XCreateColormap(xw.dpy, parent, xw.vis, None);
 	xloadcols();
@@ -1386,6 +1390,24 @@ xmakeglyphfontspecs(XftGlyphFontSpec *specs, const Glyph *glyphs, int len, int x
 	}
 
 	return numspecs;
+}
+
+void
+chgalpha(const Arg *arg)
+{
+   if (arg->f == -1.0f && alpha >= 0.1f)
+      alpha -= 0.1f;
+   else if (arg->f == 1.0f && alpha < 1.0f)
+      alpha += 0.1f;
+   else if (arg->f == 0.0f)
+      alpha = alpha_def;
+   else
+      return;
+
+   dc.col[defaultbg].color.alpha = (unsigned short)(0xFFFF * alpha);
+   /* Required to remove artifacting from borderpx */
+   cresize(0, 0);
+   redraw();
 }
 
 void
