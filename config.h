@@ -216,9 +216,9 @@ static Shortcut shortcuts[] = {
 	{ Mod1Mask,             XK_a, 		chgalpha,       {.f = -1} },
 	{ Mod1Mask,             XK_s,  		chgalpha,       {.f = +1} },
 	{ Mod1Mask,             XK_d,		chgalpha,       {.f =  0} },
-	{ Mod1Mask | ShiftMask, XK_j,           zoom,           {.f = +1} },
-    	{ Mod1Mask | ShiftMask, XK_k,           zoom,           {.f = -1} },
-    	{ Mod1Mask | ShiftMask, XK_l,           zoomreset,      {0} },
+	{ Mod1Mask | ShiftMask, XK_J,           zoom,           {.f = +1} },
+    	{ Mod1Mask | ShiftMask, XK_K,           zoom,           {.f = -1} },
+    	{ Mod1Mask | ShiftMask, XK_L,           zoomreset,      {0} },
 };
 
 /*
